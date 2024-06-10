@@ -39,3 +39,61 @@ where IDbarang = 7
 select * from penjualan p
 where p.NamaBarang like "%board%";
 
+
+
+create table penjualan1(
+idJual int not null auto_increment,
+IDbarang int not null,
+Quantity int,
+Subtotal FLOAT,
+PRIMARY KEY (idJual),
+FOREIGN KEY (IDbarang) REFERENCES penjualan(IDbarang)
+);
+
+alter table penjualan1 
+add column tanggal DATE after Subtotal;
+
+select * from penjualan p 
+where p.StokBarang < 4
+order by HargaBarang desc
+limit 2;
+
+
+select * from penjualan
+where NamaBarang like '%disk%'
+
+select * from penjualan
+
+
+insert into penjualan1 (IDbarang, Quantity, Subtotal)
+values 
+(1, 1, 150000),
+(3, 1, 300000),
+(5, 2, 400000),
+(6, 2, 200000)
+;
+
+
+select * from penjualan1 p
+
+select AVG(Subtotal) as "Rata2 Penjualan" from penjualan1
+
+select IDbarang, Quantity , SUM(Quantity) , SUM(Subtotal), COUNT(IDbarang)
+from penjualan1 p 
+where p.tanggal = '2024-02-04' or p.tanggal = '2024-02-07' 
+group by IDbarang 
+
+select * from penjualan1 p
+where IDbarang = 3 or IDbarang = 5
+
+select * from penjualan p 
+where p.StokBarang <= 4 and HargaBarang <= 250000
+
+select p.IDbarang,count(IDbarang)
+from penjualan1 p 
+group by IDbarang 
+having count(IDbarang) = 1
+
+
+
+
